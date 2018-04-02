@@ -1,0 +1,55 @@
+/**
+ * UI: Buttons
+ */
+.btn
+  border-radius: 0
+  text-transform: uppercase
+
+  // Outline
+  &.btn-outlined
+    box-shadow: none
+    background: transparent
+
+  // Circle
+  &.btn-circle
+    width: 5rem
+    height: 5rem
+    padding: 0
+    line-height: 5rem
+    text-align: center
+    border-radius: 50%
+
+  // Link
+  &.btn-link
+    text-transform: none
+
+  // Primary
+  &.btn-primary
+    color: #fff
+    background: #000
+    border-color: #000
+    &.btn-outlined
+      color: #000
+      background: transparent
+      &:hover
+        color: #fff
+        background: #000
+
+  // Danger
+  &.btn-danger
+    &.btn-outlined
+      color: #d43f3a
+      border-color: #d43f3a
+      &:hover
+        color: #fff
+        background: #d43f3a
+
+  // Light
+  &.btn-light
+    color: #000
+    border: 1px solid #fff
+    background: #fff
+    &:hover
+      color: #333
+      background: #f4f4f4
+      border-color: #ddd

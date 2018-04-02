@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "name": "Rondônia",
+    "uf": "RO"
+  }, {
+    "id": 2,
+    "name": "Acre",
+    "uf": "AC"
+  }, {
+    "id": 3,
+    "name": "Amazonas",
+    "uf": "AM"
+  }, {
+    "id": 4,
+    "name": "Roraima",
+    "uf": "RR"
+  }, {
+    "id": 5,
+    "name": "Pará",
+    "uf": "PA"
+  }, {
+    "id": 6,
+    "name": "Amapá",
+    "uf": "AP"
+  }, {
+    "id": 7,
+    "name": "Tocantins",
+    "uf": "TO"
+  }, {
+    "id": 8,
+    "name": "Maranhão",
+    "uf": "MA"
+  }, {
+    "id": 9,
+    "name": "Piauí",
+    "uf": "PI"
+  }, {
+    "id": 10,
+    "name": "Ceará",
+    "uf": "CE"
+  }, {
+    "id": 11,
+    "name": "Rio Grande do Norte",
+    "uf": "RN"
+  }, {
+    "id": 12,
+    "name": "Paraíba",
+    "uf": "PB"
+  }, {
+    "id": 13,
+    "name": "Pernambuco",
+    "uf": "PE"
+  }, {
+    "id": 14,
+    "name": "Alagoas",
+    "uf": "AL"
+  }, {
+    "id": 15,
+    "name": "Sergipe",
+    "uf": "SE"
+  }, {
+    "id": 16,
+    "name": "Bahia",
+    "uf": "BA"
+  }, {
+    "id": 17,
+    "name": "Minas Gerais",
+    "uf": "MG"
+  }, {
+    "id": 18,
+    "name": "Espírito Santo",
+    "uf": "ES"
+  }, {
+    "id": 19,
+    "name": "Rio de Janeiro",
+    "uf": "RJ"
+  }, {
+    "id": 20,
+    "name": "São Paulo",
+    "uf": "SP"
+  }, {
+    "id": 21,
+    "name": "Paraná",
+    "uf": "PR"
+  }, {
+    "id": 22,
+    "name": "Santa Catarina",
+    "uf": "SC"
+  }, {
+    "id": 23,
+    "name": "Rio Grande do Sul",
+    "uf": "RS"
+  }, {
+    "id": 24,
+    "name": "Mato Grosso do Sul",
+    "uf": "MS"
+  }, {
+    "id": 25,
+    "name": "Mato Grosso",
+    "uf": "MT"
+  }, {
+    "id": 26,
+    "name": "Goiás",
+    "uf": "GO"
+  }, {
+    "id": 27,
+    "name": "Distrito Federal",
+    "uf": "DF"
+  }
+]

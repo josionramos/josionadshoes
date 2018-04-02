@@ -1,0 +1,99 @@
+.root {
+  width: 100%;
+  font-family: 'Proxima Nova', Calibri, Helvetica, sans-serif;
+  color: #505050;
+  background-color: #f7f7f7;
+}
+
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.header img {
+  display: inline-block;
+}
+
+.main {
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.footer {
+  width: 100%;
+  padding: 15px 0;
+  font-size: 12px;
+  color: #808080;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.pull-left {
+  float: left;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn.btn-success {
+  color: #28a745;
+  border: 1px solid #28a745;
+}
+
+.table {
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.table th {
+  font-weight: bold;
+  text-aling: left;
+  padding: 4px 10px;
+  background-color: #f4f4f4;
+}
+
+.table td {
+  padding: 2px 10px;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid #ddd;
+}
+
+.table tfoot td {
+  background: #eee;
+}
+
