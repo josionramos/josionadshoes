@@ -4,7 +4,7 @@
     :class="{ 'is-active': isActive }"
     :title="color.value"
   >
-    <input type="radio" v-model="newValue" :value="color">
+    <input type="radio" name="option-color" v-model="radioValue" v-bind:value="color">
     <span class="checkable" :style="backgroundColor"></span>
   </label>
 </template>
@@ -19,29 +19,45 @@
       }
     },
     data () {
+      console.log('data color: ' + this.color.value)
       return {
-        newValue: this.value
+        newValue: this.color
       }
     },
-    watch: {
-      value (value) {
-        this.newValue = value
+
+    computed: {
+      radioValue: {
+        get: function valueradio () {
+          console.log('get radioValue color value : ' + this.color.value)
+          if (this.value) {
+            return this.color
+          }
+        },
+        set: function valueradio (cor) {
+          console.log('set radioValue color value : ' + cor.value)
+          // if (cor === this.value) {
+          // console.log('set radioValue color value Not emit:')
+          // } else {
+          this.$emit('changeButton', cor)
+          // }
+        }
       },
 
-      newValue (value) {
-        if (value === this.color) {
-          this.$emit('input', value)
-        }
-      }
-    },
-    computed: {
       isActive () {
-        return this.value && this.value.extra === this.color.extra
+        if (this.value) {
+          console.log('isActive value : ' + this.value.value)
+        }
+        if (this.newValue) {
+          console.log('isActive newValue : ' + this.newValue.value)
+        }
+        // return this.value && this.value.extra === this.color.extra
+        return this.value === this.newValue
       },
 
       backgroundColor () {
         return {
-          backgroundColor: this.color.extra ? this.color.extra : 'red'
+          backgroundColor: this.color.extra
+          // backgroundColor: this.color.extra ? this.color.extra : 'red'
         }
       }
     }
@@ -72,7 +88,7 @@
     &.is-active
       border-color: #000
 
-    input
+    .input
       display: none
 
 </style>

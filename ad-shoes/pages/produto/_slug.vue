@@ -71,7 +71,7 @@
                   v-model="variants.color"
                   :key="color.id"
                   :color="color"
-                  @click.native.prevent="currentImage = color.media ? color.media : currentImage"
+                  @changeButton="changeValue"
                 />
               </div>
             </div>
@@ -131,6 +131,7 @@
       }
     },
     async asyncData ({ params, app: { $axios } }) {
+      console.log('asyncData')
       let { data } = await $axios.get(`/products/slug/${params.slug}?includes=seo,variants,images`)
 
       return {
@@ -138,29 +139,47 @@
       }
     },
     mounted () {
+      console.log('mounted')
       this.fetchRelateds()
       this.currentImage = this.product.images[0]
     },
+
     computed: {
       colors () {
         let colors = this.product.variants['cor']
-
+        console.log('computed colors 1' + [colors])
         if (colors) {
+          console.log('computed colors 2' + [colors.filter(item => item.extra)])
           return colors.filter(item => item.extra)
         }
-
         return []
       },
 
       sizes () {
+        console.log('computed sizes: ' + this.product.variants['tamanho'])
         return this.product.variants['tamanho']
       },
 
       price () {
+        // console.log('computed price')
         return this.product.price_sale ? this.product.price_sale : this.product.sale
       },
 
       canBuy () {
+        console.log('computed canBuy')
+        if (this.sizes) {
+          console.log('canBuy s1: ' + [this.sizes])
+        }
+        if (this.variants.size) {
+          console.log('canBuy s2: ' + [this.variants.size])
+        }
+        if (this.colors) {
+          console.log('canBuy c1: ' + [this.colors])
+        }
+        if (this.variants.color) {
+          console.log('canBuy c2: ' + [this.variants.color])
+        }
+
         if (this.colors && this.sizes) {
           return this.variants.color && this.variants.size
         }
@@ -170,18 +189,22 @@
     },
     methods: {
       addToCart () {
+        console.log('methods addToCart')
         let data = {
           product: this.product,
           variants: {}
         }
 
         if (this.variants.size) {
+          console.log('addToCart size: ' + [this.variants.size.value])
           data['variants']['size'] = this.variants.size
         }
 
         if (this.variants.color) {
+          console.log('addToCart color: ' + [this.variants.color.value])
           data['variants']['color'] = this.variants.color
         }
+        console.log('addToCart finalizar')
 
         this.$store.dispatch('order/add', data).then(() => {
           this.$store.dispatch('shopping-cart/open')
@@ -189,15 +212,21 @@
       },
 
       changeVariant (e) {
+        console.log(e.target.value)
         let value = parseInt(e.target.value)
         let variant = this.sizes.find(item => item.id === value)
-
         if (variant.media) {
           this.currentImage = variant.media
         }
       },
 
+      changeValue (e) {
+        console.log('methods changeValue: ' + [e.value])
+        this.variants.color = e
+      },
+
       fetchRelateds () {
+        console.log('methods fetchRelateds')
         this.loading = true
 
         this.$axios.get(`products/${this.product.id}/relateds?includes=seo&limit=4`).then(({ data }) => {
