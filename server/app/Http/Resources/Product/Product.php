@@ -30,8 +30,12 @@ class Product extends Resource
         if ($request->has('includes')) {
             $includes = explode(',', $request->includes);
 
+            \Log::debug('Products ?includes');
+
             // SEO
             if (in_array('seo', $includes)) {
+                \Log::debug('Products ?includes=seo');
+
                 $data['seo'] = [
                     'slug' => $this->slug,
                     'title' => $this->title,

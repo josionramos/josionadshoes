@@ -98,6 +98,7 @@ class Product extends Model
      */
     public function scopeEnable($query)
     {
-        return $query->active()->has('variants');
+        // return $query->active()->has('variants');
+        return $query->active();
     }
 }

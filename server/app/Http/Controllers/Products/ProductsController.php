@@ -31,8 +31,10 @@ class ProductsController extends Controller
      */
     public function list()
     {
+        \Log::debug('Products/list?includes');
+        // DB::enableQueryLog();
         $query = QueryBuilder::for(Product::enable())->allowedFilters('category_id', 'featured')->enable();
-
+        // dd($query);
         return ProductResource::collection($query->paginate());
     }
 

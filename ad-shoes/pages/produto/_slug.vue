@@ -62,7 +62,7 @@
           </div>
 
           <!-- Colors -->
-          <div v-if="colors.length > 0" class="col-sm-8">
+          <div v-if="colors" class="col-sm-8">
             <div class="form-group">
               <label>Cores</label>
               <div>
@@ -147,12 +147,12 @@
     computed: {
       colors () {
         let colors = this.product.variants['cor']
-        console.log('computed colors 1' + [colors])
+        console.log('computed colors 1: ' + [colors])
         if (colors) {
-          console.log('computed colors 2' + [colors.filter(item => item.extra)])
+          console.log('computed colors 2: ' + [colors.filter(item => item.extra)])
           return colors.filter(item => item.extra)
         }
-        return []
+        return null
       },
 
       sizes () {
@@ -169,22 +169,31 @@
         console.log('computed canBuy')
         if (this.sizes) {
           console.log('canBuy s1: ' + [this.sizes])
-        }
-        if (this.variants.size) {
-          console.log('canBuy s2: ' + [this.variants.size])
+          if (this.variants.size) {
+            console.log('canBuy s2: ' + [this.variants.size])
+          }
         }
         if (this.colors) {
           console.log('canBuy c1: ' + [this.colors])
-        }
-        if (this.variants.color) {
-          console.log('canBuy c2: ' + [this.variants.color])
+          if (this.variants.color) {
+            console.log('canBuy c2: ' + [this.variants.color])
+          }
         }
 
         if (this.colors && this.sizes) {
+          console.log('computed canBuy if (this.colors && this.sizes) {')
           return this.variants.color && this.variants.size
+        } else if (this.colors) {
+          console.log('computed canBuy if (this.colors) {')
+          return this.variants.color
+        } else if (this.sizes) {
+          console.log('computed canBuy if (this.sizes) {')
+          return this.variants.size
+        } else {
+          console.log('computed canBuy else without variants to be select')
+          return true
         }
-
-        return (this.colors && this.variants.color) || (this.sizes && this.variants.size)
+        // return (this.colors && this.variants.color) || (this.sizes && this.variants.size)
       }
     },
     methods: {
