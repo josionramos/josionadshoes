@@ -56,7 +56,7 @@
                 @change="changeVariant"
               >
                 <option value="">Selecione</option>
-                <option v-for="size in sizes" :value="size.id">{{ size.value }}</option>
+                <option v-for="size in sizes" :value="size">{{ size.value }}</option>
               </select>
             </div>
           </div>
@@ -221,12 +221,14 @@
       },
 
       changeVariant (e) {
-        console.log(e.target.value)
+        console.log('changeVariant 1: ' + e.target.value)
         let value = parseInt(e.target.value)
         let variant = this.sizes.find(item => item.id === value)
-        if (variant.media) {
-          this.currentImage = variant.media
-        }
+        // this.variants.size = variant
+        console.log('changeVariant 2: ' + variant)
+        // if (variant.media) {
+        //   this.currentImage = variant.media
+        // }
       },
 
       changeValue (e) {

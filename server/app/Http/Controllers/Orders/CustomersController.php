@@ -70,7 +70,7 @@ class CustomersController extends Controller
             // Need to add call to check with the produt has variant defined.
             // NEW CALL HERE
             $variants = [];
-            if ($variantIds && $variantIds->count() > 0) {
+            if ($variantIds) {
                 $variants = ProductVariant::whereIn('id', $variantIds)->where('product_id', $productId)->get();
                 \Log::debug('customers/me/orders store VariantsIds: ', [$variants]);
                 if ($variants) {
@@ -127,13 +127,28 @@ class CustomersController extends Controller
         // 2. Find variants
         // Validate if variants belongs to `product_id`
         $productId = $request->input('item.product_id');
+        \Log::debug('customers/me/orders add 1: ', [$productId]);
+
         $variantIds = $request->input('item.variants.*.id');
+        \Log::debug('customers/me/orders add 1: ', [$variantIds]);
 
-        $variants = ProductVariant::whereIn('id', $variantIds)->where('product_id', $productId)->get();
+        $variants = [];
+        if ($variantIds) {
+            $variants = ProductVariant::whereIn('id', $variantIds)->where('product_id', $productId)->get();
+            \Log::debug('customers/me/orders add VariantsIds: ', [$variants]);
+            if ($variants) {
+                \Log::debug('customers/me/orders add VariantsIds count : ', [$variants]);
+            } else {
+                \Log::debug('customers/me/orders add VariantsIds count Zero');
+            }
+            // Check if has variants
+            if ($variants->count() == 0) {
+                return response('Invalid product variant', 422);
+            }
 
-        // Check if has variants
-        if ($variants->count() == 0) {
-           return response('Invalid product variant', 422);
+        } else {
+            $variants = Product::where('id', $productId)->get();
+            \Log::debug('customers/me/orders add NO VariantsIds: ', [$variants]);
         }
 
         // 2. Find the higher price on variants
