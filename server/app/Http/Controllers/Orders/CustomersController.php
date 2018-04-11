@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Orders;
 
 use App\Models\Order\Order;
 use App\Models\Product\Variant as ProductVariant;
+use App\Models\Product\Product as Product;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Order\Item as ItemRequest;
 use App\Http\Requests\Order\Order as OrderRequest;
@@ -55,26 +56,43 @@ class CustomersController extends Controller
     {
         // 1. Create the order
         $order = $this->customer->orders()->create([]);
-
+        \Log::debug('customers/me/orders store 0: ', [$order]);
         // For each items
         $items = [];
 
         foreach ($request->input('items') as $key => $item) {
             $productId = $item['product_id'];
+            \Log::debug('customers/me/orders store 1: ', [$productId]);
+
             $variantIds = $request->input("items.{$key}.variants.*.id");
+            \Log::debug('customers/me/orders store 2: ', [$variantIds]);
 
-            $variants = ProductVariant::whereIn('id', $variantIds)->where('product_id', $productId)->get();
+            // Need to add call to check with the produt has variant defined.
+            // NEW CALL HERE
+            $variants = [];
+            if ($variantIds && $variantIds->count() > 0) {
+                $variants = ProductVariant::whereIn('id', $variantIds)->where('product_id', $productId)->get();
+                \Log::debug('customers/me/orders store VariantsIds: ', [$variants]);
+                if ($variants) {
+                    \Log::debug('customers/me/orders store VariantsIds count : ', [$variants]);
+                } else {
+                    \Log::debug('customers/me/orders store VariantsIds count Zero');
+                }
+                // Check if has variants
+                if ($variants->count() == 0) {
+                    return response('Invalid product variant', 422);
+                }
 
-            // Check if has variants
-            if ($variants->count() == 0) {
-                return response('Invalid product variant', 422);
+            } else {
+                $variants = Product::where('id', $productId)->get();
+                \Log::debug('customers/me/orders store NO VariantsIds: ', [$variants]);
             }
 
             // 2. Find the higher price on variants
             // $price = $variants->max('price');
             $product = $variants->first();
             $price = $product->price_sale ? $product->price_sale : $product->price;
-
+            \Log::debug('customers/me/orders store 5');
             $items[] = [
                 'price' => $price,
                 'amount' => $item['amount'],
