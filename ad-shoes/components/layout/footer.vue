@@ -38,7 +38,7 @@
         <nuxt-link to="/institucional">Institucional</nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/contatos">Fale conosco</nuxt-link>
+        <nuxt-link to="/contato">Fale conosco</nuxt-link>
       </li>
       <li>
         <nuxt-link to="/termos-e-politicas">Termos e políticas</nuxt-link>

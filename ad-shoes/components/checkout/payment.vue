@@ -136,7 +136,7 @@
         this.loading = true
 
         let script = document.createElement('script')
-        script.src = SCRIPT.sandbox
+        script.src = SCRIPT.prod
 
         script.onload = () => {
           this.startPagSeguro()

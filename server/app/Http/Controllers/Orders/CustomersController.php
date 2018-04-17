@@ -56,6 +56,12 @@ class CustomersController extends Controller
     {
         // 1. Create the order
         $order = $this->customer->orders()->create([]);
+		/*$order = Order::create([
+			"customer_id" => $this->customer->id,
+			"status_id" => 
+		]);
+		$order->save();*/
+		
         \Log::debug('customers/me/orders store 0: ', [$order]);
         // For each items
         $items = [];

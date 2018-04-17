@@ -6,7 +6,7 @@
 
     <div class="row">
       <div class="col-sm-8 col-sm-push-2">
-        <p>Este site é de propriedade, mantido, e operado por AD Shoes Ltda, com endereço na Rua Waldemar Wasen 235, Caracol, Canela/RS, inscrita no CNPJ/MF sob o nº xx.xxx-xxx/xxxx-xx.</p>
+        <p>Este site é de propriedade, mantido, e operado por AD Shoes Ltda, com endereço na Rua Waldemar Wasen 235, Caracol, Canela/RS, inscrita no CNPJ/MF sob o nº 06.015-191/0001-41.</p>
 
         <p>A empresa disponibilizará no Site, para cada produto, uma página descritiva, da qual constarão informações relativas às suas características, composição, eventuais riscos que possa oferecer à saúde e à segurança, prazo de validade, origem, disponibilidade em estoque, condições de pagamento e preço total à vista.</p>
 
@@ -104,7 +104,7 @@
               </h4>
             </div>
             <div id="faq-h" class="panel-collapse collapse" role="tabpanel" :class="{ in: current === '#faq-h' }">
-              <div class="panel-body">Não. Ao efetuar uma Compra pelo Site, você receberá o(s) produto(s) adquirido(s) no endereço informado, por meio dos mecanismos de entrega disponibilizados pela Anate no Site. A respeito, vide a Política de Entrega.</div>
+              <div class="panel-body">Não. Ao efetuar uma Compra pelo Site, você receberá o(s) produto(s) adquirido(s) no endereço informado, por meio dos mecanismos de entrega disponibilizados pela ADShoes no Site. A respeito, vide a Política de Entrega.</div>
             </div>
           </div>
 
@@ -137,7 +137,7 @@
               </h4>
             </div>
             <div id="faq-k" class="panel-collapse collapse" role="tabpanel" :class="{ in: current === '#faq-k' }">
-              <div class="panel-body">Sim, mas somente antes de concluir a Compra no Site. Depois de finalizada, a Compra não pode mais ser alterada. Em caso de dúvida, entre em contato com nossa central de atendimento por telefone 51 3041-7696. </div>
+              <div class="panel-body">Sim, mas somente antes de concluir a Compra no Site. Depois de finalizada, a Compra não pode mais ser alterada. Em caso de dúvida, entre em contato com nossa central de atendimento por telefone 54 99988-2018. </div>
             </div>
           </div>
         </div>

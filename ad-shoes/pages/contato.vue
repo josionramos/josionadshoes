@@ -26,7 +26,7 @@
             </div>
             <div class="content">
               <span>WHATSAPP</span>
-              <p>(51) 1234-1234</p>
+              <p>(54) 99988-2018</p>
             </div>
           </div>
 
@@ -44,7 +44,7 @@
             </div>
             <div class="content">
               <span>TELEFONE</span>
-              <p>(51) 1234-1234</p>
+              <p>(54) 99988-2018</p>
             </div>
           </div>
 
