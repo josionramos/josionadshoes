@@ -21,7 +21,7 @@
             </li>
             <li
               class="step-nav-item"
-              :class="{ active: step === 'shipping', disabled: isCompleted || loading }"
+              :class="{ active: step === 'shipping', disabled: !hasItems || isCompleted || loading }"
               @click="go('shipping')"
             >
               <div class="icon">
@@ -31,7 +31,7 @@
             </li>
             <li
               class="step-nav-item"
-              :class="{ active: step === 'payment', disabled: isCompleted || loading }"
+              :class="{ active: step === 'payment', disabled: !hasItems || !hasShipping || isCompleted || loading }"
               @click="go('payment')"
             >
               <div class="icon">
@@ -112,7 +112,8 @@
         hasAddress: 'checkout/hasAddress',
         hasPayment: 'checkout/hasPayment',
         hasShipping: 'checkout/hasShipping',
-        isCompleted: 'checkout/isCompleted'
+        isCompleted: 'checkout/isCompleted',
+        hasItems: 'order/hasItems'
       }),
 
       ...mapState({

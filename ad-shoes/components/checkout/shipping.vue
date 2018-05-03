@@ -52,7 +52,7 @@
       <div class="col-xs-6">
         <ui-btn
           outlined
-          @click="$store.commit('checkout/GO_TO_STEP', 'shipping')"
+          @click="$store.commit('checkout/GO_TO_STEP', 'checkout')"
         >
           Voltar
         </ui-btn>
