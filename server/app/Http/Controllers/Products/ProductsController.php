@@ -35,7 +35,7 @@ class ProductsController extends Controller
         // DB::enableQueryLog();
         $query = QueryBuilder::for(Product::enable())->allowedFilters('category_id', 'featured')->enable();
         // dd($query);
-        return ProductResource::collection($query->paginate());
+        return ProductResource::collection($query->paginate(18));
     }
 
     /**

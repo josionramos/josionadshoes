@@ -1,10 +1,7 @@
 <template>
   <div class="gallery">
-    <div class="gallery-zoom">
+    <div class="gallery-zoom" @click="zoom">
       <img :src="current.medium" alt="">
-      <div class="btn btn-light btn-circle btn-zoom" @click="zoom">
-        <ui-icon name="search"/>
-      </div>
     </div>
     <ol class="list-unstyled gallery-dots">
       <li
@@ -59,6 +56,7 @@
     position: relative
     text-align: center
     border: 1px solid #898989
+    cursor: pointer
 
     img
       display: inline-block
