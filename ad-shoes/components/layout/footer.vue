@@ -57,7 +57,8 @@
 
     <!-- COPYRIGHT -->
     <p class="copyright">Copyright &copy; 2018 ADSHOES. <span class="will-break">Todos os direitos reservados.</span></p>
-
+    <br>
+    <p class="copyright"><img src="~/assets/img/inpi.png" alt="INPI" /> CARTA PATENTE Nº MU 8902915-1</p>
     <br>
     <br>
 
