@@ -83,7 +83,7 @@ class Api
     public function to($zipcode)
     {
         $this->body['sCepDestino'] = $this->clearZipcode($zipcode);
-
+        \Log::debug('to zipcode : ', [strval($zipcode)]);
         return $this;
     }
 
@@ -96,7 +96,7 @@ class Api
     public function from($zipcode)
     {
         $this->body['sCepOrigem'] = $this->clearZipcode($zipcode);
-
+        \Log::debug('from zipcode : ', [strval($zipcode)]);
         return $this;
     }
 
@@ -156,7 +156,7 @@ class Api
         $height = 0;
         $length = 0;
         $weight = 0;
-
+        \Log::debug('stack count : ', [strval(count($this->items))]);
         for ($i = 0; $i < count($this->items); $i++) {
             $item = $this->items[$i];
 
@@ -178,11 +178,16 @@ class Api
                 $height += $item['height'];
             }
         }
-
-         $this->body['nVlLargura'] = $width;
-         $this->body['nVlAltura'] = $height;
-         $this->body['nVlComprimento'] = $length;
-         $this->body['nVlPeso'] = $weight;
+        \Log::debug('stack largura : ', [strval($width)]);
+        \Log::debug('stack altura : ', [strval($height)]);
+        \Log::debug('stack comprimento : ', [strval($length)]);
+        \Log::debug('stack peso : ', [strval($weight)]);
+        $this->body['nVlLargura'] = $length;
+        //$this->body['nVlLargura'] = $width;
+        $this->body['nVlAltura'] = $height;
+        $this->body['nVlComprimento'] = $width;
+        //$this->body['nVlComprimento'] = $length;
+        $this->body['nVlPeso'] = $weight;
     }
 
     /**

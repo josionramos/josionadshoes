@@ -76,7 +76,7 @@
       <!-- NEXT STEP -->
       <ui-btn
         state="success"
-        :disabled="loading"
+        :disabled="!hasItems"
         @click="$store.commit('checkout/GO_TO_STEP', 'shipping')"
       >
         Prosseguir
