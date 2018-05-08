@@ -90,19 +90,63 @@ export const getters = {
 
   find: (state, getters) => (product, variants) => {
     let index = getters.findIndex(product, variants)
-
+    console.log('find index: ' + index)
     if (index > -1) {
       return getters.items[index]
     }
   },
 
   findIndex: (state) => (product, variants) => {
+    // console.log('for Id tam: ' + state.items.length)
+    state.items.forEach((item) => {
+      console.log('Olds prod for Id: ' + [item.product.id] + ' name: ' + [item.product.name])
+    })
+    console.log('new prod for Id: ' + product.id + ' name: ' + product.name)
+
+    var foundSize = false
+    var foundcolor = false
+    var hasSize = false
+    var hasColor = false
+    // corrigir logica
     return state.items.findIndex(item => {
       let matchVariants = filter(item.variants, (variant, index) => {
-        return variants[index] && variant.id === variants[index].id
+        console.log('variants for index: ' + index)
+        if (variants[index] && index === 'color') {
+          foundcolor = true
+          console.log('new color for Id: ' + variants[index].id)
+          console.log('old color for Id: ' + variant.id)
+          if (variants[index].id === variant.id) {
+            hasColor = true
+            return true
+          }
+        } else if (variants[index] && index === 'size') {
+          foundSize = true
+          console.log('new size for Id: ' + variants[index].id)
+          console.log('old size for Id: ' + variant.id)
+          if (variants[index].id === variant.id) {
+            hasSize = true
+            return true
+          }
+        }
+        return false
       })
-
-      return item.product.id === product.id && matchVariants.length > 0
+      console.log('matchVariants size: ' + matchVariants.length)
+      console.log('found color : ' + foundcolor)
+      console.log('found size : ' + foundSize)
+      console.log('has color : ' + hasColor)
+      console.log('has size : ' + hasSize)
+      if (foundcolor && foundSize) {
+        if (matchVariants.length !== 2) {
+          return false
+        }
+      } else if (foundcolor || foundSize) {
+        if (matchVariants.length !== 1) {
+          return false
+        } else if (!hasColor && !hasSize) {
+          return false
+        }
+      }
+      return item.product.id === product.id
     })
   }
 }
