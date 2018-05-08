@@ -271,7 +271,7 @@ class Transaction extends Resource
      * @param  string  $birthdate
      * @return Transaction
      */
-    public function setCreditCardHolder($name, $cpf, $birthdate)
+    public function setCreditCardHolder($name, $cpf, $birthdate,$areacode,$phonenumber)
     {
         if (! $this->creditCard) {
             $this->creditCard = $this->root->addChild('creditCard');
@@ -280,6 +280,10 @@ class Transaction extends Resource
         $holder = $this->creditCard->addChild('holder');
         $holder->addChild('name', $name);
         $holder->addChild('birthDate', $birthdate);
+
+        $phone = $holder->addChild('phone');
+        $phone->addChild('areaCode', $areacode);
+        $phone->addChild('number', $phonenumber);
 
         $documents = $holder->addChild('documents');
         $document = $documents->addChild('document');

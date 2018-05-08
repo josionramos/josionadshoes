@@ -15,6 +15,8 @@ use App\Http\Requests\Payment\PagSeguro as PagSeguroRequest;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Log;
+
 class PagSeguroController extends Controller
 {
     /**
@@ -44,10 +46,12 @@ class PagSeguroController extends Controller
         // 1) Get customer order
         $user = auth()->user();
         $customer = $user->customer;
+//	Log::info('Customer: '.$customer);
         $order = $customer->orders()->findOrFail($request->order_id);
 
         $phone = explode(' ', $customer->phone);
 
+        Log::info('Phone: '.print_r($phone,true));
         // 2) Create shipping
         $shipping = $order->shipping()->create($request->input('shipping'));
         $address = $shipping->address;
@@ -56,7 +60,7 @@ class PagSeguroController extends Controller
         $transaction = $api->transaction();
         $transaction->setCustomer($user->name, $user->email, $customer->cpf)
                     ->setHash($request->input('hash'))
-                    ->setPhone($phone[0], $phone[1])
+                    ->setPhone($phone[0],$phone[1])
                     ->setAddress(
                         $address->street,
                         $address->number,
@@ -101,19 +105,29 @@ class PagSeguroController extends Controller
             );
 
             if (! $request->input('creditCard.owner')) {
+
+                $phone = explode(' ', $request->input('creditCard.holder.phone'));
+
                 $transaction->setCreditCardHolder(
                     $request->input('creditCard.holder.name'),
                     $request->input('creditCard.holder.cpf'),
-                    $request->input('creditCard.holder.birthdate')
+                    $request->input('creditCard.holder.birthdate'),
+                    $phone[0],
+                    $phone[1]
                 );
 
-                $phone = explode(' ', $request->input('creditCard.holder.phone'));
                 $transaction->setCreditCardPhone($phone[0], $phone[1]);
+
             } else {
+
+                Log::info('Customer: '.print_r($customer,true));
+
                 $transaction->setCreditCardHolder(
                     $user->name,
                     $customer->cpf,
-                    '03/05/1995'
+                    date("d/m/Y", strtotime($customer->birthdate)),
+                    $phone[0],
+                    $phone[1]
                 );
 
                 $transaction->setCreditCardPhone($phone[0], $phone[1]);
@@ -122,6 +136,7 @@ class PagSeguroController extends Controller
 
         // 6) Send request to PagSeguro
         try {
+            Log::info('Transaction: '.print_r($transaction,true));
             $response = $transaction->create();
         } catch (RequestException $e) {
             return response($e->getErrors(), 422);

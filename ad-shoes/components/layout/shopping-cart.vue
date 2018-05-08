@@ -57,7 +57,8 @@
     <footer>
       <!-- Signin or login -->
       <div v-if="!loggedIn" class="text-center">
-        <button class="btn btn-primary btn-outlined btn-lg">Criar conta</button>
+        <!--<button class="btn btn-primary btn-outlined btn-lg">Criar conta</button>-->
+        <nuxt-link class="btn btn-primary btn-outlined btn-lg" to="/registrar-se" @click.native="close">Criar conta</nuxt-link>
         <br>
         <br>
         <p>ou <nuxt-link to="/entrar" @click.native="close">entrar</nuxt-link></p>

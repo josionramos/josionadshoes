@@ -56,7 +56,7 @@
     position: relative
     text-align: center
     border: 1px solid #898989
-    cursor: pointer
+    cursor: zoom-in
 
     img
       display: inline-block

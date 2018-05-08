@@ -114,6 +114,13 @@ class Product extends Resource
             }
         }
 
+        if ($this->category_id == 1){
+            $data['notes'] = '* Incluso embalagem com 5 cores de saltos e tiras';
+        }
+        if ($this->category_id == 3){
+            $data['notes'] = '* Incluso embalagem com 5 cores de tiras';
+        }
+
         return $data;
     }
 }

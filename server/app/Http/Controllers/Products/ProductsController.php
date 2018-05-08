@@ -87,10 +87,31 @@ class ProductsController extends Controller
      */
     public function related(Product $product, Request $request)
     {
-        $query = Product::enable()
-                        ->where('category_id', $product->category_id)
-                        ->take($request->input('limit', 3));
+        $category_id = $product->category_id;
+        if ($product->category_id == 1 ||
+                $product->category_id == 2 ||
+                $product->category_id == 3){
 
+            $query = Product::enable()
+                        ->where('category_id', 4)
+                        ->take($request->input('limit', 3))
+                        ->inRandomOrder();
+
+        } else if ($product->category_id == 4){
+
+            $query = Product::enable()
+                        ->whereIn('category_id', array(1,2,3))
+                        ->take($request->input('limit', 3))
+                        ->inRandomOrder();
+
+
+        } else {
+
+            $query = Product::enable()
+                        ->where('category_id', $category_id)
+                        ->take($request->input('limit', 3))
+                        ->inRandomOrder();
+        }
         return ProductResource::collection($query->get());
     }
 

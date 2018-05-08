@@ -9,6 +9,7 @@
       <!-- Gallery -->
       <div class="col-sm-6">
         <gallery v-model="currentImage" :images="product.images"/>
+        {{ product.notes }}
       </div>
 
       <!-- Info -->
