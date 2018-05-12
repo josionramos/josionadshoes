@@ -31,7 +31,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
     data () {
@@ -39,6 +39,16 @@
         fail: false,
         loading: false
       }
+    },
+    mounted () {
+      let hash = window.PagSeguroDirectPayment.getSenderHash()
+
+      this.$store.commit('checkout/SET_HOLDER_HASH', hash)
+    },
+    computed: {
+      ...mapGetters({
+        holder: 'checkout/holder'
+      }),
     },
     methods: {
       ...mapActions({

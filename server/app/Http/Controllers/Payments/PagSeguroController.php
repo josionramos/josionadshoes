@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Log;
 
+use Exception;
+
 class PagSeguroController extends Controller
 {
     /**
@@ -137,6 +139,8 @@ class PagSeguroController extends Controller
         // 6) Send request to PagSeguro
         try {
             Log::info('Transaction: '.print_r($transaction,true));
+			//$error = 'Sistema em teste!';
+			//throw new Exception($error);
             $response = $transaction->create();
         } catch (RequestException $e) {
             return response($e->getErrors(), 422);

@@ -94,7 +94,7 @@ class Client
         }
 
         $this->http = new Http([
-            'timeout' => 5.0,
+            'timeout' => 300.0,
             'base_uri' => $url,
             'headers' => [
                 'Content-Type' => 'application/xml;chartset=UTF-8'
