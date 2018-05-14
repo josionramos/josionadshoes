@@ -48,7 +48,7 @@ class ShippingsController extends Controller
         $address = $this->customer->addresses()->findOrFail($request->address_id);
 
         $api->to($address->zipcode)
-            ->from('95901610')
+            ->from('95680000')
             ->addService(Api::PAC)
             ->addService(Api::SEDEX);
 

@@ -4,7 +4,7 @@
       v-for="media in medias"
       class="col-md-2 col-sm-3 col-xs-6 instagram-media"
       target="_blank"
-      :href="'https://www.instagram.com/p/' + media.code"
+      :href="'https://www.instagram.com/loveadshoes'"
     >
       <img :src="media.images.low_resolution.url" class="img-responsive">
       <button class="btn btn-light btn-circle">
