@@ -15,6 +15,7 @@
       <!-- Info -->
       <div class="col-sm-6 info">
         <p v-if="product.sku" class="ref">REF {{ product.sku }}</p>
+        <p v-if="product.sku" class="product-name">{{ product.name }}</p>
 
         <!-- Price -->
         <div class="row">
@@ -267,6 +268,13 @@
       color: #000
     .installments
       text-transform: uppercase
+
+  .product-name
+    font-size: 2rem
+    color: #000
+    margin-bottom: 25px
+    font-weight: bold
+    text-transform: uppercase
 
   .ref
     font-size: 1.75rem

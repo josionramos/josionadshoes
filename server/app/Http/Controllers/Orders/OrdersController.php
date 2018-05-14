@@ -17,7 +17,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $query = QueryBuilder::for(Order::class)->allowedFilters('customer_id', 'status_id', 'reference');
+        $query = QueryBuilder::for(Order::class)->allowedFilters('customer_id', 'status_id', 'reference')->latest();
 
         return OrderResource::collection($query->paginate());
     }
