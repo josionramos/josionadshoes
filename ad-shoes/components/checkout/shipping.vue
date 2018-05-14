@@ -90,8 +90,8 @@
         loading: false,
         shippings: [],
         shippingTypes: {
-          4014: 'PAC',
-          4510: 'SEDEX'
+          4014: 'SEDEX',
+          4510: 'PAC'
         }
       }
     },

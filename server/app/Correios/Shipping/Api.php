@@ -2,6 +2,8 @@
 
 namespace App\Correios\Shipping;
 
+use Illuminate\Support\Facades\Log;
+
 class Api
 {
     /**
@@ -202,6 +204,10 @@ class Api
 
         $this->body['nCdServico'] = implode(',', $this->services);
 
-        return $this->client->request($this->body);
+		
+		$_return = $this->client->request($this->body);
+		Log::info('Correios/Api/calc/return: '.print_r($_return,true));
+		
+        return $_return;
     }
 }
