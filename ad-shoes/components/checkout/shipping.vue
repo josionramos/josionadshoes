@@ -21,7 +21,7 @@
 
           <!-- Recalculate -->
           <ui-alert v-if="fail" state="warning">
-            <b>Ups!</b> Não foi possível calcular o frete pelos Correios. <a href="#" @click.prevent="calc">Tente novamente</a>
+            <b>Ops!</b> Não foi possível calcular o frete pelos Correios. <a href="#" @click.prevent="calc">Tente novamente</a>
           </ui-alert>
 
           <!-- Shipping options -->
@@ -65,7 +65,7 @@
           :disabled="!hasShipping"
           @click="$store.commit('checkout/GO_TO_STEP', 'payment')"
         >
-          Proseguir
+          Prosseguir
         </ui-btn>
       </div>
     </div>

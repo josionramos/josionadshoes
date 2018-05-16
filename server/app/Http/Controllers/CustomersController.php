@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Customer;
 use App\Mail\Customer\Confirmation;
+use App\Mail\Customer\NewPassword;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer as CustomerRequest;
 use App\Http\Resources\Customer as CustomerResource;
 
 use Illuminate\Support\Facades\Mail;
 use Spatie\QueryBuilder\QueryBuilder;
+
+use Illuminate\Support\Facades\Log;
 
 class CustomersController extends Controller
 {
@@ -61,6 +64,8 @@ class CustomersController extends Controller
     public function profile(CustomerRequest $request)
     {
         $user = auth()->user();
+        
+        Log::debug('CustomersController:profile: $ request: '.print_r($request,true));
 
         $user->update($request->all());
         $user->customer->update($request->all());
@@ -82,5 +87,35 @@ class CustomersController extends Controller
         ]);
 
         return response(';)');
+    }
+    
+    /**
+     * Store a newly customer.
+     *
+     * @param  CustomerRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function forgotPassword(CustomerRequest $request)
+    {
+        Log.debug('Forgot password request: '.print_r($request, true));
+        $user = User::where('email',$request->email);
+        $customer = $user->customer()->create($request->all());
+
+        Mail::to($user->email)->send(new Confirmation($customer));
+
+        return new CustomerResource($customer);
+    }
+    
+    /**
+     * Reset user password.
+     *
+     * @param  string $token
+     * @return \Illuminate\Http\Response
+     */
+    public function resetPassword($token)
+    {
+        $user = User::where('token', $token)->firstOrFail();
+        
+        return new CustomerResource(auth()->user()->customer);
     }
 }

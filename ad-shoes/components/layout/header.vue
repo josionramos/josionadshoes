@@ -40,7 +40,7 @@
               </a>
             </li>
             <li>
-              <a href="https://www.instagram.com/loveadshoes/" class="hvr-push" target="_blank">
+              <a href="https://www.instagram.com/loveadshoes/" class="hvr-push" v-tooltip="'basic one'" target="_blank">
                 <ui-icon name="instagram"/>
               </a>
             </li>
@@ -79,7 +79,7 @@
       }),
 
       userLink () {
-        return this.$store.getters['auth/isLoggedIn'] ? '/minha-conta' : '/entrar'
+        return this.$store.getters['auth/isLoggedIn'] ? '/minha-conta/meus-dados' : '/entrar'
       }
     },
     methods: {

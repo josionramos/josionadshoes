@@ -10,7 +10,7 @@
           <nuxt-link class="list-group-item" to="/minha-conta/pedidos">Meus pedidos</nuxt-link>
           <nuxt-link class="list-group-item" to="/minha-conta/enderecos">Meus endereços</nuxt-link>
         </div>
-        <a href="#" class="btn btn-link" @click.prevent="logout">Sair</a>
+        <button class="btn btn-link" v-on:click="logout">Sair</button>
       </div>
       <div class="col-sm-9">
         <nuxt-child/>

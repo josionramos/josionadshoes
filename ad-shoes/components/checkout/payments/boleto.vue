@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <ui-alert v-if="fail" state="danger">
-      <b>Ups!</b> Houve algum problema ao processar seu pagamento pelo PagSeguro, por favor, tente novamente.
+      <b>Ops!</b> Houve algum problema ao processar seu pagamento pelo PagSeguro, por favor, tente novamente.
     </ui-alert>
 
     <template v-else>
@@ -41,8 +41,19 @@
       }
     },
     mounted () {
-      let hash = window.PagSeguroDirectPayment.getSenderHash()
-
+      let hash = null;
+      if (hash == null || typeof hash === "undefined"){
+        hash = window.PagSeguroDirectPayment.getSenderHash()
+      }
+      
+      if (hash == null || typeof hash === "undefined"){
+        hash = window.PagSeguroDirectPayment.getSenderHash()
+      }
+      
+      if (hash == null || typeof hash === "undefined"){
+        hash = window.PagSeguroDirectPayment.getSenderHash()
+      }
+      
       this.$store.commit('checkout/SET_HOLDER_HASH', hash)
     },
     computed: {
@@ -58,6 +69,8 @@
       create () {
         this.loading = true
 
+        
+        
         this.$store.dispatch('checkout/process').then(() => {
           this.fail = false
           this.loading = false

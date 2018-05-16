@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name', 'email', 'password', 'active'
     ];
 
+    protected $attributes = array(
+      'active' => 1
+    );
+
     /**
      * The attributes that should be hidden for arrays.
      *

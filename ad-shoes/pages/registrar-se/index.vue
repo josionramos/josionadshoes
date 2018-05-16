@@ -19,7 +19,7 @@
             <div class="col-sm-6">
               <ui-form-group
                 field="name"
-                label="Nome"
+                label="Nome Completo"
                 :errors="errors"
               >
                 <ui-input
@@ -84,7 +84,7 @@
               >
                 <ui-date
                   v-model="form.fields.birthdate"
-                  placeholder="Data de nascimento"
+                  placeholder="DD/MM/YYYY"
                 />
               </ui-form-group>
             </div>
@@ -175,7 +175,8 @@
     methods: {
       register () {
         this.form.post('/register').then(({ data }) => {
-          this.complete = true
+        //this.complete = true
+        this.$router.push('/checkout')
         }).catch(error => {
           console.log(error)
         })

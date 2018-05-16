@@ -14,6 +14,7 @@ export const mutations = {
 
   LOGOUT (state) {
     Object.assign(state, state)
+    state.token = null
   },
 
   SET_CUSTOMER (state, customer) {
@@ -36,13 +37,13 @@ export const actions = {
   },
 
   async logout ({ commit }) {
-    await axios.get('api/logout')
+    await axios.get('/api/logout')
 
     commit('LOGOUT')
   },
 
   async login ({ commit }, user) {
-    const { data } = await axios.post('api/login', user)
+    const { data } = await axios.post('/api/login', user)
 
     commit('LOGIN', data.access_token)
     commit('SET_CUSTOMER', data.customer)

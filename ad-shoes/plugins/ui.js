@@ -7,6 +7,10 @@ import UiZoom from '@/components/ui/zoom'
 // Toast
 import UiToast from '@/components/ui/toast'
 
+// Tooltip
+import VTooltip from 'v-tooltip'
+Vue.use(VTooltip)
+
 for (let name in Ui) {
   Vue.component(name, Ui[name])
 }

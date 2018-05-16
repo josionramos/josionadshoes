@@ -144,6 +144,7 @@
       console.log('mounted')
       this.fetchRelateds()
       this.currentImage = this.product.images[0]
+      this.$store.dispatch('nav/previousURL', '/produto')
     },
 
     computed: {

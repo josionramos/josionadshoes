@@ -80,7 +80,7 @@
           v-model="isOwner"
           @change="$store.commit('checkout/SET_CREDIT_CARD_OWNER', isOwner)"
         >
-        Sou o titular do cartão de cŕedito
+        Sou o titular do cartão de credito
       </label>
     </div>
 
@@ -186,7 +186,15 @@
     },
     mounted () {
       let hash = window.PagSeguroDirectPayment.getSenderHash()
-
+      
+      if (hash == null || typeof hash === "undefined"){
+        hash = window.PagSeguroDirectPayment.getSenderHash()
+      }
+      
+      if (hash == null || typeof hash === "undefined"){
+        hash = window.PagSeguroDirectPayment.getSenderHash()
+      }
+      
       this.$store.commit('checkout/SET_HOLDER_HASH', hash)
     },
     watch: {

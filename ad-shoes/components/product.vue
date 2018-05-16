@@ -25,6 +25,7 @@
         required: true
       }
     },
+
     computed: {
       to () {
         return `/produto/${this.product.seo.slug}`

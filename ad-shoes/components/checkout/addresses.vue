@@ -24,10 +24,10 @@
     <!-- EMPTY-->
     <div v-if="!loading && addresses.length === 0">
       <div class="alert alert-danger">
-        <b>Ups!</b> Você não possui nenhum endereço de entrega cadastrado.
+        <b>Ops!</b> Você não possui nenhum endereço de entrega cadastrado.
       </div>
       <div class="text-center">
-        <nuxt-link class="btn btn-success" to="/minha-conta/enderecos">Novo endereço</nuxt-link>
+        <nuxt-link class="btn btn-success" to="/minha-conta/enderecos/novo">Novo endereço</nuxt-link>
       </div>
     </div>
   </div>

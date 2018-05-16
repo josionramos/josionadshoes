@@ -51,6 +51,8 @@ Route::post('/register', 'CustomersController@register');
  * CUSTOMER
  */
 Route::get('/customers/confirmation/{token}', 'CustomersController@confirmation');
+Route::get('/customers/forgot/password', 'CustomersController@forgotPassword');
+Route::get('/customers/reset/password/{token}', 'CustomersController@resetPassword');
 
 /**
  * PAGSEGURO

@@ -220,10 +220,12 @@
   }
 </script>
 
-<style lang="sass">
-  .table-section .title
-    font-size: 1rem
-    color: #999
-    font-weight: 100
+<style lang="sass" scoped>
+  .table-section
     text-transform: uppercase
+    font-size: 1rem;
+
+  .table-section
+    .title
+      font-size: 1rem;
 </style>

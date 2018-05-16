@@ -283,7 +283,7 @@ class Transaction extends Resource
 
         $phone = $holder->addChild('phone');
         $phone->addChild('areaCode', $areacode);
-        $phone->addChild('number', $phonenumber);
+        $phone->addChild('number', str_replace("-","",$phonenumber));
 
         $documents = $holder->addChild('documents');
         $document = $documents->addChild('document');
@@ -340,7 +340,7 @@ class Transaction extends Resource
 
         $phone = $this->creditCard->addChild('phone');
         $phone->addChild('areaCode', $ddd);
-        $phone->addChild('number', $number);
+        $phone->addChild('number', str_replace("-","",$number));
 
         return $this;
     }

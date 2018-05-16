@@ -11,6 +11,9 @@
       <div v-if="error" class="alert alert-danger">
         {{ error }}
       </div>
+      <div v-if="forgetPasswordEmailSent" class="alert">
+        Um email de recuperação de senha foi enviado para o email cadastrado. Verfique sua caixa de entrada. Precisando de ajuda entre em contato!
+      </div>
 
       <ui-form-group>
         <div class="input-group">
@@ -65,7 +68,8 @@
         },
         error: null,
         loading: false,
-        forgetPassword: false
+        forgetPassword: false,
+        forgetPasswordEmailSent: false
       }
     },
     computed: {
@@ -74,18 +78,37 @@
       }
     },
     methods: {
+      openShoppingCart: 'shopping-cart/open',
+
       login () {
         this.loading = true
 
-        this.$store.dispatch('auth/login', this.form).then(this.success).catch(({ response }) => {
-          this.fail(response.data)
+        if (!this.forgetPassword){
+            this.$store.dispatch('auth/login', this.form).then(this.success).catch(({ response }) => {
+                this.fail(response.data)
+            })
+        } else {
+           this.form.post('/customers/forgot/password', this.form).then(({ data }) => {
+          this.success = true
         })
+        }
       },
 
       success () {
-        this.$router.push('/minha-conta/meus-dados')
+        let url = ''
+        if (this.$store.getters['nav/previousURL'].includes("produto") && this.$store.getters['order/hasItems']) {
+            url = '/checkout'
+        } else {
+            url = '/minha-conta/meus-dados'
+        }
+        this.$store.dispatch('nav/previousURL', '/entrar')
+        this.$router.push(url)
       },
-
+      
+      successPwd () {
+        this.forgetPasswordEmailSent = true;
+      },
+      
       fail (data) {
         this.loading = false
         this.error = data.message

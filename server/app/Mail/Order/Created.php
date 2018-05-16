@@ -39,6 +39,6 @@ class Created extends Mailable
     {
         return $this->view('emails.order.created')->with([
             'order' => $this->order
-        ])->subject('Nova pedido realizado');
+        ])->subject('Novo pedido realizado');
     }
 }

@@ -1,5 +1,6 @@
 export const state = () => ({
-  active: false
+  active: false,
+  previousURL: ''
 })
 
 export const mutations = {
@@ -9,12 +10,19 @@ export const mutations = {
 
   TOGGLE (state) {
     state.active = !state.active
+  },
+  
+  SET_PREVIOUS_URL (state, url) {
+    state.previousURL = url
   }
 }
 
 export const getters = {
   isActive (state) {
     return state.active
+  },
+  previousURL (state) {
+    return state.previousURL
   }
 }
 
@@ -29,5 +37,11 @@ export const actions = {
 
   toggle ({ commit }) {
     commit('TOGGLE', false)
+  },
+  
+  previousURL({ commit, state }, url){
+      
+    commit('SET_PREVIOUS_URL', url)
   }
+  
 }
