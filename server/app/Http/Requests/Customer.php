@@ -40,7 +40,7 @@ class Customer extends FormRequest
         }
 
         if ($this->isMethod('put')) {
-            $rules['cpf'][] = 'unique:customers,cpf,' . $this->user()->id;
+            //$rules['cpf'][] = 'unique:customers,cpf,' . $this->user()->id;
             $rules['email'][] = 'unique:users,email,' . $this->user()->id;
             $rules['password'] = 'nullable|min:6|confirmed';
         }
