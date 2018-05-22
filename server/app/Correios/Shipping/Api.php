@@ -135,13 +135,14 @@ class Api
      * @param  float $weight
      * @return Api
      */
-    public function addItem($width, $height, $length, $weight)
+    public function addItem($width, $height, $length, $weight, $qtd)
     {
         $this->items[] = [
           'width' => $width,
           'height' => $height,
           'length' => $length,
-          'weight' => $weight
+          'weight' => $weight,
+          'qtd' => $qtd
         ];
 
         return $this;
@@ -158,11 +159,11 @@ class Api
         $height = 0;
         $length = 0;
         $weight = 0;
-        \Log::debug('stack count : ', [strval(count($this->items))]);
+        Log::debug('stack count : ', [strval(count($this->items))]);
         for ($i = 0; $i < count($this->items); $i++) {
             $item = $this->items[$i];
 
-            $weight += $item['weight'];
+            $weight += floatval ($item['weight'] * $item['qtd']);
 
             if ($i == 0) {
                 $width = $item['width'];
@@ -180,10 +181,16 @@ class Api
                 $height += $item['height'];
             }
         }
-        \Log::debug('stack largura : ', [strval($width)]);
-        \Log::debug('stack altura : ', [strval($height)]);
-        \Log::debug('stack comprimento : ', [strval($length)]);
-        \Log::debug('stack peso : ', [strval($weight)]);
+        Log::debug('stack largura : ', [strval($width)]);
+        Log::debug('stack altura : ', [strval($height)]);
+        Log::debug('stack comprimento : ', [strval($length)]);
+        Log::debug('stack peso : ', [strval($weight)]);
+        
+        //Seta valores arbitrarios, deixa frete considerar apenas o peso
+        $width = 30;
+        $height = 20;
+        $length = 30;
+        
         $this->body['nVlLargura'] = $length;
         //$this->body['nVlLargura'] = $width;
         $this->body['nVlAltura'] = $height;
@@ -204,9 +211,12 @@ class Api
 
         $this->body['nCdServico'] = implode(',', $this->services);
 
-		
+		$inicio = time();
+        //Log::debug('Body: '.print_r($this->body,true));
 		$_return = $this->client->request($this->body);
-		Log::info('Correios/Api/calc/return: '.print_r($_return,true));
+        $fim =  time();
+		Log::debug('Consulta aos correios levou '.($fim - $inicio).' segundos');
+        Log::debug('Correios/Api/calc/return: '.print_r($_return,true));
 		
         return $_return;
     }

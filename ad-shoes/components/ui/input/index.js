@@ -7,6 +7,7 @@ import UiInput from './input'
 import UiSelect from './select'
 import UiZipcode from './zipcode'
 import UiCreditCard from './credit-card'
+import UiDateCheckout from './date-checkout'
 
 export {
   UiCpf,
@@ -17,5 +18,6 @@ export {
   UiInput,
   UiSelect,
   UiZipcode,
-  UiCreditCard
+  UiCreditCard,
+  UiDateCheckout
 }

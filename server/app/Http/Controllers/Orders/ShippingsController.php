@@ -59,7 +59,8 @@ class ShippingsController extends Controller
                 $product->width,
                 $product->height,
                 $product->length,
-                number_format($product->weight / 1000, 2)
+                number_format($product->weight / 1000, 2),
+                $item->amount
             );
         }
 

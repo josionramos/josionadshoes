@@ -6,6 +6,8 @@ use DOMDocument;
 use GuzzleHttp\Client as Http;
 use GuzzleHttp\Exception\RequestException;
 
+use Illuminate\Support\Facades\Log;
+
 class Client
 {
     /**
@@ -30,7 +32,7 @@ class Client
     public function __construct()
     {
         $this->http = new Http([
-            'timeout' => 8.0
+            'timeout' => 30.0
         ]);
     }
 
@@ -73,6 +75,8 @@ class Client
             $response = $this->http->request('GET',self::URL, [
                 'query' => $data
             ]);
+            
+            Log::debug('Retorno API Correios: '.print_r($response,true));
 //        } catch(RequestException $e) {
 //            if ($e->hasResponse()) {
 //                \Log::debug('STATUS: ' . $e->getResponse()->getStatusCode());

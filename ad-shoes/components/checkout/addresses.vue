@@ -62,6 +62,9 @@
         this.loading = true
         this.$axios.get('/customers/me/addresses').then(({ data }) => {
           this.addresses = data.data
+          if (this.addresses.lenght == 1){
+            this.current = this.addresses[0]
+          }
           this.loading = false
         })
       },

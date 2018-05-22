@@ -16,7 +16,8 @@ import {
   UiColor,
   UiSelect,
   UiZipcode,
-  UiCreditCard
+  UiCreditCard,
+  UiDateCheckout
 } from './input/index.js'
 
 // Forms
@@ -38,6 +39,7 @@ export default {
   UiSelect,
   UiZipcode,
   UiCreditCard,
+  UiDateCheckout,
 
   UiLoading,
 

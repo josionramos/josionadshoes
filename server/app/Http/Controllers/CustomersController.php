@@ -65,7 +65,7 @@ class CustomersController extends Controller
     {
         $user = auth()->user();
         
-        Log::debug('CustomersController:profile: $ request: '.print_r($request,true));
+        //Log::debug('CustomersController:profile: $ request: '.print_r($request,true));
 
         $user->update($request->all());
         $user->customer->update($request->all());

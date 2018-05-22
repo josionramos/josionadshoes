@@ -1,7 +1,7 @@
 <template>
   <div>
     <ui-alert v-if="pagseguro.errors.length > 0 || errors.hasErrors()" state="danger">
-      <p><b>Ups!</b> Houve algum problema com a API PagSeguro e retornou os seguintes errors:</p>
+      <p><b>Ops!</b> Houve algum problema com a API PagSeguro e retornou os seguintes errors:</p>
       <br>
       <ul>
         <li v-for="error in pagseguro.errors">
@@ -41,8 +41,8 @@
         <ui-form-group>
           <ui-mask
             v-model="creditCard.expire"
-            placeholder="Validade"
-            :mask="'99/9999'"
+            placeholder="Validade MM/YY"
+            :mask="'99/99'"
           />
         </ui-form-group>
       </div>
@@ -142,7 +142,7 @@
             field="creditCard.holder.birthdate"
             :errors="errors"
           >
-            <ui-date
+            <ui-date-checkout
               :value="holder.birthdate"
               placeholder="Data de nascimento"
               @input="updateHolder('birthdate', $event)"
@@ -165,6 +165,7 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
+  import moment from 'moment'
 
   export default {
     data () {
@@ -252,7 +253,7 @@
       },
 
       createCardToken () {
-        if (this.creditCard.brand && this.creditCard.expire.length >= 7 && this.creditCard.cvv.length >= 3) {
+        if (this.creditCard.brand && this.creditCard.expire.length >= 5 && this.creditCard.cvv.length >= 3) {
           let expire = this.creditCard.expire.split('/')
 
           window.PagSeguroDirectPayment.createCardToken({
@@ -260,7 +261,7 @@
             brand: this.creditCard.brand,
             cardNumber: this.creditCard.number,
             expirationMonth: expire[0],
-            expirationYear: expire[1],
+            expirationYear: '20'+expire[1],
             success: ({ card }) => {
               this.$store.commit('checkout/SET_CREDIT_CARD_TOKEN', card.token)
             },
