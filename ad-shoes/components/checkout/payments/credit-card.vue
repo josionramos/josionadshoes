@@ -165,7 +165,6 @@
 
 <script>
   import { mapActions, mapGetters } from 'vuex'
-  import moment from 'moment'
 
   export default {
     data () {
@@ -187,15 +186,15 @@
     },
     mounted () {
       let hash = window.PagSeguroDirectPayment.getSenderHash()
-      
-      if (hash == null || typeof hash === "undefined"){
+
+      if (hash == null || typeof hash === 'undefined') {
         hash = window.PagSeguroDirectPayment.getSenderHash()
       }
-      
-      if (hash == null || typeof hash === "undefined"){
+
+      if (hash == null || typeof hash === 'undefined') {
         hash = window.PagSeguroDirectPayment.getSenderHash()
       }
-      
+
       this.$store.commit('checkout/SET_HOLDER_HASH', hash)
     },
     watch: {
@@ -261,7 +260,7 @@
             brand: this.creditCard.brand,
             cardNumber: this.creditCard.number,
             expirationMonth: expire[0],
-            expirationYear: '20'+expire[1],
+            expirationYear: '20' + expire[1],
             success: ({ card }) => {
               this.$store.commit('checkout/SET_CREDIT_CARD_TOKEN', card.token)
             },

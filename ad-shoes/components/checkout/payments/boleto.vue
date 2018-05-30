@@ -41,25 +41,25 @@
       }
     },
     mounted () {
-      let hash = null;
-      if (hash == null || typeof hash === "undefined"){
+      let hash = null
+      if (hash == null || typeof hash === 'undefined') {
         hash = window.PagSeguroDirectPayment.getSenderHash()
       }
-      
-      if (hash == null || typeof hash === "undefined"){
+
+      if (hash == null || typeof hash === 'undefined') {
         hash = window.PagSeguroDirectPayment.getSenderHash()
       }
-      
-      if (hash == null || typeof hash === "undefined"){
+
+      if (hash == null || typeof hash === 'undefined') {
         hash = window.PagSeguroDirectPayment.getSenderHash()
       }
-      
+
       this.$store.commit('checkout/SET_HOLDER_HASH', hash)
     },
     computed: {
       ...mapGetters({
         holder: 'checkout/holder'
-      }),
+      })
     },
     methods: {
       ...mapActions({
@@ -69,8 +69,6 @@
       create () {
         this.loading = true
 
-        
-        
         this.$store.dispatch('checkout/process').then(() => {
           this.fail = false
           this.loading = false

@@ -83,32 +83,32 @@
       login () {
         this.loading = true
 
-        if (!this.forgetPassword){
-            this.$store.dispatch('auth/login', this.form).then(this.success).catch(({ response }) => {
-                this.fail(response.data)
-            })
+        if (!this.forgetPassword) {
+          this.$store.dispatch('auth/login', this.form).then(this.success).catch(({ response }) => {
+            this.fail(response.data)
+          })
         } else {
-           this.form.post('/customers/forgot/password', this.form).then(({ data }) => {
-          this.success = true
-        })
+          this.form.post('/customers/forgot/password', this.form).then(({ data }) => {
+            this.success = true
+          })
         }
       },
 
       success () {
         let url = ''
-        if (this.$store.getters['nav/previousURL'].includes("produto") && this.$store.getters['order/hasItems']) {
-            url = '/checkout'
+        if (this.$store.getters['nav/previousURL'].includes('produto') && this.$store.getters['order/hasItems']) {
+          url = '/checkout'
         } else {
-            url = '/minha-conta/meus-dados'
+          url = '/minha-conta/meus-dados'
         }
         this.$store.dispatch('nav/previousURL', '/entrar')
         this.$router.push(url)
       },
-      
+
       successPwd () {
-        this.forgetPasswordEmailSent = true;
+        this.forgetPasswordEmailSent = true
       },
-      
+
       fail (data) {
         this.loading = false
         this.error = data.message

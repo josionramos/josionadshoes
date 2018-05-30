@@ -10,7 +10,6 @@
 </template>
 
 <script>
-  import moment from 'moment'
   import masker from 'vanilla-masker'
 
   import defaultProps from './default'

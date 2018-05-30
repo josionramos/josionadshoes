@@ -11,7 +11,7 @@ export const mutations = {
   TOGGLE (state) {
     state.active = !state.active
   },
-  
+
   SET_PREVIOUS_URL (state, url) {
     state.previousURL = url
   }
@@ -38,10 +38,9 @@ export const actions = {
   toggle ({ commit }) {
     commit('TOGGLE', false)
   },
-  
-  previousURL({ commit, state }, url){
-      
+
+  previousURL ({ commit, state }, url) {
     commit('SET_PREVIOUS_URL', url)
   }
-  
+
 }

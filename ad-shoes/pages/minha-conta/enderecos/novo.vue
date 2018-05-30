@@ -47,10 +47,10 @@
             message: '<b>Sucesso!</b> Endereço cadastrado com sucesso!'
           })
 
-          if (this.$store.getters['order/hasItems']){
-              this.$router.push('/checkout')
+          if (this.$store.getters['order/hasItems']) {
+            this.$router.push('/checkout')
           } else {
-              this.$router.push(`/minha-conta/enderecos/${data.id}`)
+            this.$router.push(`/minha-conta/enderecos/${data.id}`)
           }
         })
       }

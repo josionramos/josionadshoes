@@ -175,8 +175,8 @@
     methods: {
       register () {
         this.form.post('/register').then(({ data }) => {
-        //this.complete = true
-        this.$router.push('/checkout')
+        // this.complete = true
+          this.$router.push('/checkout')
         }).catch(error => {
           console.log(error)
         })
