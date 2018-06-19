@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <section class="row hero">
-      <div class="col-sm-6 col-xs-12">
+      <nuxt-link to="institucional" class="col-sm-6 col-xs-12">
         <h2><span>Seu</span> sapato,<br>do <span>seu</span> jeito.</h2>
-      </div>
-      <div class="col-sm-6 col-xs-12">
+      </nuxt-link>
+      <nuxt-link to="institucional" class="col-sm-6 col-xs-12">
         <p><slot></slot></p>
-      </div>
+      </nuxt-link>
     </section>
   </div>
 </template>
@@ -14,8 +14,12 @@
 <style lang="sass">
   .hero
     padding: 100px 0
-    p
-      line-height: 2.5rem
+    a
+      text-decoration: none
+      p
+        line-height: 2.5rem
+        color: #898989
+      
     h2
       font-weight: 100
       font-size: 5rem
