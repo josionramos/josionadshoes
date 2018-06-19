@@ -3,7 +3,7 @@
     <div class="product-thumb" :style="{ backgroundImage: `url(${thumbnail})` }"></div>
     <div class="product-info">
       <h4>{{ product.name }}</h4>
-      <p>{{ product.price | money }}</p>
+      <!--<p>{{ product.price | money }}</p>-->
       <button class="btn btn-circle btn-light">
         <ui-icon name="shopping-bag" />
       </button>

@@ -23,12 +23,12 @@
             <div class="price">
               <template v-if="product.price_sale">
                 <p class="old">De <strike>{{ product.price | money }}</strike> por</p>
-                <p class="new">{{ product.price_sale | money }}</p>
+                <p class="new"><b>{{ product.price_sale | money }}</b></p>
               </template>
               <template v-else>
-                <p class="new">{{ product.price | money }}</p>
+                <p class="new"><b>{{ product.price | money }}</b></p>
               </template>
-              <p class="installments">Ou <b>3X de {{ product.price / 3 | money }}</b> sem juros</p>
+              <p class="new">Ou <b>3X de <span class=installments>{{ product.price / 3 | money }}</span></b> sem juros</p>
             </div>
           </div>
 
@@ -263,12 +263,14 @@
   .price
     p
       margin: 0
-    .new
+    .installments
       font-size: 2.5rem
       font-weight: bold
       color: #000
-    .installments
+    .new
       text-transform: uppercase
+      font-size: 1.5rem
+      color: #000
 
   .product-name
     font-size: 2rem
