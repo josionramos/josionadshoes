@@ -20,6 +20,7 @@ Route::get('/products/list', 'Products\ProductsController@list');
 Route::get('/products/slug/{slug}', 'Products\ProductsController@slug');
 Route::get('/products/{product}/relateds', 'Products\ProductsController@related');
 Route::get('/products/categories/list', 'Products\CategoriesController@list');
+Route::get('/products/search/{text}', 'Products\ProductsController@search');
 
 /**
  * FORMS

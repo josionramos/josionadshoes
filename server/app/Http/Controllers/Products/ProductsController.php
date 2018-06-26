@@ -141,4 +141,19 @@ class ProductsController extends Controller
 
         return response('oka');
     }
+    
+    /**
+     * Search products.
+     *
+     * @param  String  $product
+     * @return ProductResource
+     */
+    public function search($text, Request $request)
+    {
+        $query = Product::enable()
+                    ->where('name', 'like', '%'.$text.'%')
+                    ->inRandomOrder();
+        
+        return ProductResource::collection($query->get());
+    }
 }
