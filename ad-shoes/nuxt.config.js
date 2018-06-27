@@ -68,7 +68,8 @@ module.exports = {
     '~/plugins/filters',
     '~/plugins/ui',
     '~/plugins/axios',
-    '~/plugins/form'
+    '~/plugins/form',
+    { src: '~plugins/ga.js', ssr: false }
   ],
   serverMiddleware: [
     bodyParser.json(),
