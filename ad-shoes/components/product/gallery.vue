@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery">
+  <div class="gallery" @mouseover="pauseLoop" @mouseleave="resume">
     <div class="gallery-zoom" @click="zoom">
       <img :src="current.medium" alt="">
     </div>
@@ -26,13 +26,18 @@
     },
     data () {
       return {
-        current: this.value ? this.value : this.images[0]
+        current: this.value ? this.value : this.images[0],
+        currentIndex: 0,
+        pause: false
       }
     },
     watch: {
       value (value) {
         this.current = value
       }
+    },
+    mounted () {
+      this.loop()
     },
     methods: {
       zoom () {
@@ -41,10 +46,39 @@
         })
       },
 
+      pauseLoop () {
+        // console.log('pauseLoop')
+        this.pause = true
+        // console.log('this.pause: ' + this.pause)
+      },
+
+      resume () {
+        // console.log('resume')
+        this.pause = false
+        // console.log('this.pause: ' + this.pause)
+      },
+
       change (image) {
         this.current = image
 
         this.$emit('input', image)
+      },
+
+      loop () {
+        // console.log('loop')
+        let self = this
+
+        setInterval(function () {
+          if (!self.pause) {
+            if (self.currentIndex === self.images.length - 1) {
+              self.currentIndex = 0
+            } else {
+              self.currentIndex++
+            }
+            console.log('currentIndex ' + self.currentIndex)
+            self.change(self.images[self.currentIndex])
+          }
+        }, 5000)
       }
     }
   }
