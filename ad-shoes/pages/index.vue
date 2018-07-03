@@ -5,7 +5,7 @@
 
     <!-- Hero -->
     <hero>
-      Personalize sua sandália, rasteira ou scarpin com diversas cores de salto e tiras para deixar o seu look com o seu estilo e ainda leve acessórios para criar uma composição única e exclusiva.
+      Personalize sua sandália ou rasteira com diversas cores de salto e tiras para deixar o seu look com o seu estilo e ainda leve acessórios para criar uma composição única e exclusiva.
     </hero>
 
     <!-- Products -->
