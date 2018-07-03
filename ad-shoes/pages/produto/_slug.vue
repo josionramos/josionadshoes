@@ -9,13 +9,13 @@
       <!-- Gallery -->
       <div class="col-sm-6">
         <gallery v-model="currentImage" :images="product.images"/>
-        {{ product.notes }}
       </div>
 
       <!-- Info -->
       <div class="col-sm-6 info">
         <p v-if="product.sku" class="ref">REF {{ product.sku }}</p>
         <p v-if="product.sku" class="product-name">{{ product.name }}</p>
+        <p v-if="product.sku" class="product-notes">{{ product.notes }}</p>
 
         <!-- Price -->
         <div class="row">
@@ -275,8 +275,13 @@
   .product-name
     font-size: 2rem
     color: #000
-    margin-bottom: 25px
     font-weight: bold
+    text-transform: uppercase
+
+  .product-notes
+    font-size: 1.5rem
+    color: #000
+    margin-bottom: 25px
     text-transform: uppercase
 
   .ref
