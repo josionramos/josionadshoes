@@ -19,11 +19,13 @@
       <transition name="fade">
         <div v-if="isNavActive" id="main-navbar" class="collapse navbar-collapse in">
           <ul class="nav navbar-nav navbar-right navbar-icons">
+            <!--
             <li>
               <a href="#" class="hvr-push" @click.prevent="toggleSearch">
                 <ui-icon name="search"/>
               </a>
             </li>
+            -->
             <li>
               <nuxt-link class="hvr-push" :to="userLink">
                 <ui-icon name="user"/>
@@ -146,4 +148,3 @@
       a
         font-size: 2rem
 </style>
-

@@ -6,6 +6,7 @@
     </ui-page-header>
 
     <!-- Filter -->
+    <!--
     <div class="form-inline text-right">
       <ui-form-group label="Filtrar por">
         <ui-select
@@ -24,6 +25,7 @@
         </ui-select>
       </ui-form-group>
     </div>
+    -->
 
     <br>
 
