@@ -35,6 +35,8 @@
           <!-- Buy button -->
           <div class="col-xs-6">
             <button
+              :data-balloon="!canBuy ? 'Selecione o tamanho' : false"
+              data-balloon-pos="down"
               class="btn btn-primary btn-outlined btn-block btn-lg"
               :disabled="!canBuy"
               @click="addToCart"

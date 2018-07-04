@@ -19,7 +19,8 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:100,300' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:100,300' },
+      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css' }
     ]
   },
   router: {
